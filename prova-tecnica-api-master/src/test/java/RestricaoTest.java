@@ -34,6 +34,7 @@ public class RestricaoTest {
                 .get("97093236014")
         .then()
                 .statusCode(HttpStatus.OK.value());
+                .body("erros.nome", Matchers.equalTo("Pessoa com restrição"));
     }
 
     @Test
@@ -44,5 +45,6 @@ public class RestricaoTest {
                 .get("85471203003")
         .then()
                 .statusCode(HttpStatus.NO_CONTENT.value());
+                .body("erros.nome", Matchers.equalTo("Não possui restrição"));
     }
 }
