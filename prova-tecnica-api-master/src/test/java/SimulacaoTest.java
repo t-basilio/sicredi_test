@@ -63,6 +63,7 @@ public class SimulacaoTest {
                 .get()
         .then()
                 .statusCode(HttpStatus.OK.value());
+                .body("mensagem", Matchers.equalTo("Simulações encontradas"));
     }
 
     @Test
@@ -73,6 +74,7 @@ public class SimulacaoTest {
                 .get("17822386034")
         .then()
                 .statusCode(HttpStatus.OK.value());
+                .body("mensagem", Matchers.equalTo("Simulação encontrada"));
     }
 
     @Test
@@ -83,6 +85,7 @@ public class SimulacaoTest {
                 .get("85471203003")
                 .then()
                 .statusCode(HttpStatus.NOT_FOUND.value());
+                .body("mensagem", Matchers.equalTo("Simulação não encontrada"));
     }
 
     @Test
@@ -94,7 +97,8 @@ public class SimulacaoTest {
         .when()
                 .post()
         .then()
-                .statusCode(HttpStatus.CREATED.value());
+                .statusCode(HttpStatus.CREATED.value());]
+                .body("mensagem", Matchers.equalTo("Simulação criada com sucesso"));
     }
 
     @Test
@@ -174,5 +178,6 @@ public class SimulacaoTest {
                 .delete("66414919004")
         .then()
                 .statusCode(HttpStatus.OK.value());
+                .body("mensagem", Matchers.equalTo("Simulação removida com sucesso"));
     }
 }
